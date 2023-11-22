@@ -48,10 +48,13 @@ describe NumberGame do
       # Write a similar test to the one above, that uses a custom matcher
       # instead of <, >, =.
       matcher :be_between_zero_and_nine do
+        match { |num| num.between?(0, 9) }
       end
 
       # remove the 'x' before running this test
-      xit 'is a number between 0 and 9' do
+      it 'is a number between 0 and 9' do
+        solution = game.solution
+        expect(solution).to be_between_zero_and_nine
       end
     end
   end
@@ -79,7 +82,9 @@ describe NumberGame do
     # does not equal @solution.
     context 'when user guess is not correct' do
       # remove the 'x' before running this test
-      xit 'is not game over' do
+      subject(:game_continue) { described_class.new(3, '4')}
+      it 'is not game over' do
+        expect(game_continue).not_to be_game_over
       end
     end
   end
@@ -107,11 +112,14 @@ describe NumberGame do
 
     # Write a test for the following context.
     context 'when given invalid input as argument' do
-      xit 'returns nil' do
+      it 'returns nil' do
+        user_input = '3333333'
+        verified_input = game_check.verify_input(user_input)
+        expect(verified_input).to be_nil
       end
     end
   end
-
+# TAKE IT OVER HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   describe '#player_turn' do
     # In order to test the behavior of #player_turn, we need to use a method
     # stub for #player_input to return a valid_input ('3'). To stub a method,
