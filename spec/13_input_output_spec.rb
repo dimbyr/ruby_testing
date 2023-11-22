@@ -119,7 +119,7 @@ describe NumberGame do
       end
     end
   end
-# TAKE IT OVER HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  # TAKE IT OVER HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   describe '#player_turn' do
     # In order to test the behavior of #player_turn, we need to use a method
     # stub for #player_input to return a valid_input ('3'). To stub a method,
