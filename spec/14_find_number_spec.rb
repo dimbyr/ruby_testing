@@ -82,6 +82,7 @@ describe FindNumber do
   end
 end
 
+# TAKE OVER HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 # ASSIGNMENT
 # For this lesson you will be doing TDD for 3 methods: #make_guess,
 # #game_over?, and #update_range.

@@ -119,7 +119,7 @@ describe NumberGame do
       end
     end
   end
-  # TAKE IT OVER HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   describe '#player_turn' do
     # In order to test the behavior of #player_turn, we need to use a method
     # stub for #player_input to return a valid_input ('3'). To stub a method,
@@ -175,9 +175,15 @@ describe NumberGame do
     # Write a test for the following context.
     context 'when user inputs two incorrect values, then a valid input' do
       before do
+        letter_one = 'aaa'
+        letter_two = 'bbb'
+        valid_input = '9'
+        allow(game_loop).to receive(:player_input).and_return(letter_one, letter_two, valid_input)
       end
 
-      xit 'completes loop and displays error message twice' do
+      it 'completes loop and displays error message twice' do
+        expect(game_loop).to receive(:puts).with('Input error!').twice
+        game_loop.player_turn
       end
     end
   end
@@ -209,7 +215,8 @@ describe NumberGame do
     # @guess, and @count
     context 'when count is 2-3' do
       # remove the 'x' before running this test
-      xit 'outputs correct phrase' do
+      subject(:game) { described_class.new(5, '5', 3) }
+      it 'outputs correct phrase' do
         congrats_phrase = "Congratulations! You picked the random number in 3 guesses!\n"
         expect { game.final_message }.to output(congrats_phrase).to_stdout
       end
@@ -219,8 +226,11 @@ describe NumberGame do
 
     # Write a test for the following context.
     context 'when count is 4 and over' do
+      subject(:game) { described_class.new(5, '5', 5) }
       # remove the 'x' before running this test
-      xit 'outputs correct phrase' do
+      it 'outputs correct phrase' do
+        hard = "That was hard. It took you 5 guesses!\n"
+        expect { game.final_message }.to output(hard).to_stdout
       end
     end
   end
