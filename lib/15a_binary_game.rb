@@ -35,7 +35,7 @@ class BinaryGame
   end
 
   def verify_input(min, max, input)
-    return input if input.between?(min, max)
+    input if input.between?(min, max)
   end
 
   def update_random_number
